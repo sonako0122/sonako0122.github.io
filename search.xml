@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Info</title>
+    <url>/2025/03/09/Info/</url>
+    <content><![CDATA[<h3 id="您好我是Yosaki-Sonako-Hello-I’m-Yosaki-Sonako"><a href="#您好我是Yosaki-Sonako-Hello-I’m-Yosaki-Sonako" class="headerlink" title="您好我是Yosaki Sonako Hello, I’m Yosaki Sonako"></a>您好我是Yosaki Sonako Hello, I’m Yosaki Sonako</h3><pre><code> 很荣幸你能来到我的blog来看我这位萌新的文章
+ 这个blog的最初建立其实就是搞着玩的（
+ 小时候很羡慕他们有一个属于自己的blog....
+ 
+</code></pre>
+<h1 id="关于我的信息？-Information-about-me"><a href="#关于我的信息？-Information-about-me" class="headerlink" title="关于我的信息？ Information about me?"></a>关于我的信息？ Information about me?</h1><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;LS0tLS1CRUdJTiBQR1AgU0lHTkVEIE1FU1NBR0UtLS0tLQpIYXNoOiBTSEE1MTIKCiMgIUJhc2ljIGluZm8KbmFtZTogICAgICAgc29uYWtvCmxhc3QgbmFtZTogIFlvc2FraQpUaW1lZGF0ZTogICBBc2lhL1NoYW5naGFpIFVUQy04IApMb2NhdGlvbjogICBIZWJlaS5DaGluYQoKIyBDb250YWN0IG1lClBNOiAgICAgICAgICBAc29uYWtvMDcKTWFpbDogICAgICAgIHlvc2FraXNvbmFrb0BnbWFpbC5jb20KCiMgTXlsaW5rcwpHaXRodWI6ICAgICAgaHR0cHM6Ly9naXRodWIuY29tL3NvbmFrbzAxMjIKQmxvZzogICAgICAgIGh0dHBzOi8vc29uYWtvMDEyMi5naXRodWIuaW8vCgojIE1heGltCuaIkeW+iOWWnOasoui/memHjO+8jOaIkeS4gOeCueS5n+S4jeaDs+atu+WOu++8jOS9hueOsOWunuS4gOebtOi/h+eahOWLpOiDveihpeaLmQpJIGxvdmUgaXQgaGVyZSwgSSBkb24ndCB3YW50IHRvIGRpZSBhdCBhbGwsIGJ1dCB0aGUgcmVhbGl0eSBoYXMgYWx3YXlzIHBhc3NlZCB0aGF0IGhhcmQgd29yayBtYWtlcyB1cCBmb3IgaGFyZCB3b3JrCi0tLS0tQkVHSU4gUEdQIFNJR05BVFVSRS0tLS0tCgppSFVFQVJZS0FCMFdJUVF5ZHc3UmNveGlwbnV2UjB0SHE1ZGM1NUhEeGdVQ1o4dkc5QUFLQ1JCSHE1ZGM1NUhECnh1Y0JBUURZWC8rNmxRQndsaEMzdUNhLzNtakwvcmhGR1oxTE42SFdOSjc3eGpKVXNnRC9keVFVNVRYdm9pYkUKRkoxL0wxQ3FYRmRJSnN2dXZMWGR6WmFrRTc4UlRRWT0KPXUrRUMKLS0tLS1FTkQgUEdQIFNJR05BVFVSRS0tLS0tCg==&quot;</span> | <span class="built_in">base64</span> -d</span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>请使用 <code>bash</code> 解码即可看到我的pgp认证的个人信息<br>Please use bash decode to see my pgp certified personal information.</p>
+</blockquote>
+<h2 id="至于这个Blog之后的走向"><a href="#至于这个Blog之后的走向" class="headerlink" title="至于这个Blog之后的走向"></a>至于这个Blog之后的走向</h2><p><del>那肯定是吃灰的（</del></p>
+<p><strong>不过我现在学习还是有点紧张的<br>    有时也会分享一些自己的桌面环境<br>    也可能会发一些自己的小玩具之类的</strong></p>
+<h2 id="尾言"><a href="#尾言" class="headerlink" title="尾言"></a>尾言</h2><p><strong>希望您能够天天开心__<br>    我也需要强迫自己努力学习一些知识了<br>    QwQ</strong></p>
+]]></content>
+      <tags>
+        <tag>这只是一个简单的介绍</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2025/03/08/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>.</p>
