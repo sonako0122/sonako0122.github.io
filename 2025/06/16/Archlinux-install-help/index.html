@@ -29,7 +29,7 @@
 <meta property="og:description" content="我很喜欢这里，我一点也不想死去，但现实一直过的勤能补拙">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-16T07:32:57.000Z">
-<meta property="article:modified_time" content="2025-06-16T11:46:20.710Z">
+<meta property="article:modified_time" content="2025-06-17T15:52:54.440Z">
 <meta property="article:author" content="yosaki_sonako">
 <meta property="article:tag" content="Archlinux安装流程">
 <meta name="twitter:card" content="summary">
@@ -379,8 +379,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-06-16 19:46:20</span>
-            <span class="mobile">2025-06-16 19:46:20</span>
+            <span class="desktop">2025-06-17 23:52:54</span>
+            <span class="mobile">2025-06-17 23:52:54</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -418,12 +418,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>601 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>999 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 分钟</span>
         </span>
     
     
@@ -471,13 +471,53 @@
 <pre><code> 配置好这一切我们就离进入chroot不远啦，不过想要使用archlinux还要很多的配置
 </code></pre>
 <h2 id="开始进行安装基础固件"><a href="#开始进行安装基础固件" class="headerlink" title="开始进行安装基础固件"></a>开始进行安装基础固件</h2><p>使用默认的编辑器(nano&#x2F;vim)编辑<code>/etc/pacman.d/mirrorlist</code></p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pacman.d/mirrorlist</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">~这里可以按ctrl+k 按死然后就会吧安装源清理干净~</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当然你也可以直接添加下面这些源 不用非要做我那样的强迫症动作</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pacman.d/mirrorlist</span><br><span class="line"><span class="meta prompt_">~# </span><span class="language-bash">这里可以按ctrl+k 按死然后就会吧安装源清理干净~</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当然你也可以直接添加下面这些源 不用非要做我那样的强迫症动作</span></span><br></pre></td></tr></table></figure></div>
 
 <p>我这里比较用<code>ustc中科大源</code> </p>
 <blockquote>
 <p>但为了一些人网络的环境我这里会写3个源</p>
 </blockquote>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch #清华</span><br><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch #北外</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch #中科大</span><br></pre></td></tr></table></figure></div>
+
+<pre><code> 添加完之后我们执行更新
+</code></pre>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">wiki并不推荐Syyu强行更新</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="进行分区"><a href="#进行分区" class="headerlink" title="进行分区"></a>进行分区</h2><p><strong>进行查看分区列表</strong></p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure></div>
+
+<p>大概会输出下面这些内容</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nvme0n1         259:0    0    120G   0  disk </span><br><span class="line">├─nvme0n1p1     259:1    0     16M   0  part  Microsoft reserved partition</span><br><span class="line">├─nvme0n1p2     259:2    0    600G   0  part  Microsoft basic data partition</span><br><span class="line">└─nvme0n1p3     259:1    0    300G   0  part  </span><br></pre></td></tr></table></figure></div>
+<p><code>途中如果你是sdX那代表这是机械或者sata/m2 nvmeX是nvme固态 正常笔记本或大多数人都是pcie接口固态 很少用m2 自己要看好噢</code></p>
+<pre><code> 我这里是nvme0n1p3是我创建的空盘
+</code></pre>
+<p>我使用的是<code>cfdisk</code>而并非<code>fdisk</code><br>     进入cfdisk后 选择你要选择的空盘<br>     我这里是nvmen1p3<br>     然后会在上面面有介绍</p>
+<blockquote>
+<p>磁盘名称<br>磁盘标签<br>大小<br>扇区数量<br>标识符</p>
+</blockquote>
+<pre><code> 下面一些则是主要功能
+</code></pre>
+<ul>
+<li><p>[New]选项为新建分区，将方向键选择到未分配的分区</p>
+</li>
+<li><p>[Quit]可以退出 cfdisk ，并且不保存修改，也就是之前做的操作一律作废</p>
+</li>
+<li><p>[Help]查看 cfdisk 帮助</p>
+</li>
+<li><p>[Write]选项才是真的执行写入操作，使用后会对操作的磁盘执行写入，以前做的修改会生效</p>
+</li>
+<li><p>[Type]选项可以改变分区类型，boot分区选择EFI分区类型，根目录选择filesystem</p>
+</li>
+<li><p>swap分区选择Linux swap类型即可</p>
+   
+  <div class="note p-4 mb-4 rounded-small danger">
+    <p>编辑好一定要write之后再退出 </p>
+
+  </div></li>
+</ul>
+<p><strong>如果有windows分区，则不需要动任何win下的分区</strong><br>分区完成后使用<code>fdisk -l</code>查看分区类别 确认无误后就开始格式化分区</p>
+<h2 id="格式分区"><a href="#格式分区" class="headerlink" title="格式分区"></a>格式分区</h2><p><strong>格式化<code>EFI</code>分区</strong></p>
+
 		</div>
 
 		
@@ -491,7 +531,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-06-16 19:46:20
+                    :</strong> 2025-06-17 23:52:54
             </li>
         
         <li>
@@ -597,7 +637,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">Archlinux_install_help</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%88%E4%B9%85%E5%B0%B1%E6%83%B3%E5%86%99%E4%B8%80%E7%AF%87arch%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B"><span class="nav-text">很久就想写一篇arch的安装教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E8%8A%82"><span class="nav-text">安装环节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E5%9B%BA%E4%BB%B6"><span class="nav-text">开始进行安装基础固件</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%88%E4%B9%85%E5%B0%B1%E6%83%B3%E5%86%99%E4%B8%80%E7%AF%87arch%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B"><span class="nav-text">很久就想写一篇arch的安装教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E8%8A%82"><span class="nav-text">安装环节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E5%9B%BA%E4%BB%B6"><span class="nav-text">开始进行安装基础固件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E5%88%86%E5%8C%BA"><span class="nav-text">进行分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%88%86%E5%8C%BA"><span class="nav-text">格式分区</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -630,7 +670,7 @@
                     </span>
                     
                         <span>
-                            共 801 字
+                            共 1.2k 字
                         </span>
                     
                 </p>
