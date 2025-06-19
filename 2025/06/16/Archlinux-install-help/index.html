@@ -29,7 +29,7 @@
 <meta property="og:description" content="我很喜欢这里，我一点也不想死去，但现实一直过的勤能补拙">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-16T07:32:57.000Z">
-<meta property="article:modified_time" content="2025-06-19T09:23:28.345Z">
+<meta property="article:modified_time" content="2025-06-19T09:24:55.354Z">
 <meta property="article:author" content="yosaki_sonako">
 <meta property="article:tag" content="Archlinux安装流程">
 <meta name="twitter:card" content="summary">
@@ -379,8 +379,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-06-19 17:23:28</span>
-            <span class="mobile">2025-06-19 17:23:28</span>
+            <span class="desktop">2025-06-19 17:24:55</span>
+            <span class="mobile">2025-06-19 17:24:55</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -569,15 +569,15 @@
 
 <h3 id="配置用户"><a href="#配置用户" class="headerlink" title="配置用户"></a>配置用户</h3><p>执行以下命令创建用户(以”sonako”为例)</p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -m -g users -G wheel sonako #创建用户</span><br><span class="line">passwd root #设置root密码 密码不会显示</span><br><span class="line">passwd sonako #设置用户密码 同上 密码不会显示</span><br></pre></td></tr></table></figure></div>
-<p>配置用户权限<br>     使用编辑器编辑<code>/etc/sudoers</code><br>     找到<code># %wheel ALL=(ALL:ALL) ALL</code><br>     取消前面的<code>#</code>这一行注释</p>
+<p>配置用户权限<br>     使用编辑器编辑<code>/etc/sudoers</code><br>     找到<code># %wheel ALL=(ALL:ALL) ALL</code><br>     取消前面的<code>#</code>注释</p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="meta prompt_">%</span><span class="language-bash">wheel ALL=(ALL:ALL) ALL</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
 
 <hr>
 <p>安装 微码&#x2F;引导程序<br>     安装intel或amd的引导程序<br>     <strong>我想已经不需要我再让你们查看cpuinfo信息了把</strong><br>     应该自己都知道自己的cpu （组要是sonako懒得写了（（</p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">amd</span> </span><br><span class="line">pacman -S amd-ucode</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">intel</span></span><br><span class="line">pacman -S intel-ucode</span><br></pre></td></tr></table></figure></div>
 
-<h3 id="配置grub"><a href="#配置grub" class="headerlink" title="配置grub"></a>配置grub</h3><p>接下来就是最后一步啦<br>     <u>我的教程是会跟随双系统进行配置grub</u><br>     如果你不需要双系统 请把<code>os-probe</code>这个组件删除 以及下面的配置你也不需要更改<br>     <strong>我会进行标注</strong></p>
-<p><strong>安装grub(这里的os-prober是为了引导win)</strong></p>
+<h3 id="配置grub"><a href="#配置grub" class="headerlink" title="配置grub"></a>配置grub</h3><p>接下来就是最后一步啦<br>     <u>我的教程是会跟随双系统进行配置grub</u><br>     如果你不需要双系统 不需要下载<code>os-probe</code>这个组件 以及下面的配置你也不需要更改<br>     <strong>我会进行标注</strong></p>
+<p>*<em>安装grub(<em>这里的os-prober是为了引导win)</em></em></p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr efivar os-prober</span><br></pre></td></tr></table></figure></div>
 
 <p>安装完之后就可以配置grub了</p>
@@ -645,7 +645,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-06-19 17:23:28
+                    :</strong> 2025-06-19 17:24:55
             </li>
         
         <li>
