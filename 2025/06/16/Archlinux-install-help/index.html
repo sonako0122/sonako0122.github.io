@@ -29,7 +29,7 @@
 <meta property="og:description" content="我很喜欢这里，我一点也不想死去，但现实一直过的勤能补拙">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-16T07:32:57.000Z">
-<meta property="article:modified_time" content="2025-06-17T17:35:35.359Z">
+<meta property="article:modified_time" content="2025-06-19T09:12:26.583Z">
 <meta property="article:author" content="yosaki_sonako">
 <meta property="article:tag" content="Archlinux安装流程">
 <meta name="twitter:card" content="summary">
@@ -379,8 +379,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-06-18 01:35:35</span>
-            <span class="mobile">2025-06-18 01:35:35</span>
+            <span class="desktop">2025-06-19 17:12:26</span>
+            <span class="mobile">2025-06-19 17:12:26</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -418,12 +418,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.2k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.7k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>9 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>11 分钟</span>
         </span>
     
     
@@ -489,7 +489,7 @@
 <p>大概会输出下面这些内容</p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nvme0n1         259:0    0    932G   0  disk </span><br><span class="line">├─nvme0n1p1     259:1    0     16M   0  part  Microsoft reserved partition</span><br><span class="line">├─nvme0n1p2     259:2    0    600G   0  part  Microsoft basic data partition</span><br><span class="line">└─nvme0n1p3     259:1    0    300G   0  part  </span><br></pre></td></tr></table></figure></div>
 <p><code>途中如果你是sdX那代表这是机械或者sata/m2 nvmeX是nvme固态 正常笔记本或大多数人都是pcie接口固态 很少用m2 自己要看好噢</code></p>
-<p>我这里是nvme0n1p3是我创建的空盘<br>我使用的是<code>cfdisk</code>而并非<code>fdisk</code><br>     进入cfdisk后 选择你要选择的空盘<br>     我这里是nvmen1p3<br>     然后会在上面面有介绍</p>
+<p>我这里是nvme0n1p3是我创建的空盘<br>我使用的是<code>cfdisk</code>而并非<code>fdisk</code><br>     进入cfdisk后 选择你要选择的空盘<br>     我这里是nvmen1p3<br>     然后会在上面有介绍</p>
 <blockquote>
 <p>磁盘名称<br>磁盘标签<br>大小<br>扇区数量<br>标识符</p>
 </blockquote>
@@ -537,7 +537,7 @@
 <h2 id="安装基础包"><a href="#安装基础包" class="headerlink" title="安装基础包"></a>安装基础包</h2><p>这里我会根据我每次安装所需要的来推荐<br>     一般我会先安装bash作为首选 安装完成系统后再进行配置<br>使用<code>pacstrap</code>进行安装基础组件</p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base base-devel linux linux-firmware linux-zen linux-headers linux-zen-headers vim git dhcpcd e2fsprogs iwd bash bash-completions ntfs-3g gvfs-mtp networkmanager grub efibootmgr</span><br></pre></td></tr></table></figure></div>
 
-<p><u><strong><del>这都是我一路走来 遇到无数的坑才会安装这么多基础组件</del></strong></u></p>
+<p><u><strong><del>这都是我一路走来 遇到无数的坑才会安装这么多基础组件</del></strong></u><br>当然你也可以进入arch-chroot之后在进行安装这些</p>
 <p><strong>使用<code>genfstab</code>写入 fstab 文件 自动挂载分区不然系统无法正常启动</strong></p>
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">默认 -U 是efi生成 是主流的方式 如果你是老bios那么需要 -p进行生成mbr自动挂载</span></span><br><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看是否生成</span></span><br><span class="line">cat /mnt/etc/fstab</span><br></pre></td></tr></table></figure></div>
 
@@ -577,6 +577,50 @@
 <div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">amd</span> </span><br><span class="line">pacman -S amd-ucode</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">intel</span></span><br><span class="line">pacman -S intel-ucode</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="配置grub"><a href="#配置grub" class="headerlink" title="配置grub"></a>配置grub</h3><p>接下来就是最后一步啦<br>     <u>我的教程是会跟随双系统进行配置grub</u><br>     如果你不需要双系统 请把<code>os-probe</code>这个组件删除 以及下面的配置你也不需要更改<br>     <strong>我会进行标注</strong></p>
+<p><strong>安装grub(这里的os-prober是为了引导win)</strong></p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr efivar os-prober</span><br></pre></td></tr></table></figure></div>
+
+<p>安装完之后就可以配置grub了</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Grub --recheck</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">一般这是efi的配置方式 如果你是古老bios那你就用下面这条</span></span><br><span class="line">grub-install --target=i386-pc /dev/nvme0n1 #sonako忘记了 直接抄的别人的喵</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>为双系统做准备</strong><br><u>如果你不需要双系统那么这一步也不需要进行</u><br>     使用编辑器更改grub的配置文件<br>     <code>/etc/default/grub</code></p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;GRUB_DISABLE_OS_PROBER=false&quot; &gt;&gt; /etc/default/grub</span><br></pre></td></tr></table></figure></div>
+<hr>
+<p><strong>grub的一些简单配置</strong></p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/default/grub</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>去掉 GRUB_CMDLINE_LINUX_DEFAULT 一行中最后的 quiet 参数</li>
+<li>把 loglevel 的数值从 3 改成 5。这样是为了后续如果出现系统错误，方便排错</li>
+<li>加入 nowatchdog 参数，这可以显著提高开关机速度 #这里就是不看开机logd了</li>
+</ul>
+<p><strong>最后生成配置文件</strong></p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></div>
+<p><strong>如果输出以下内容那就代表没有问题</strong></p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Installing for x86_64-efi platform.</span><br><span class="line">Installation finished. No error reported.</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p><strong>最后就是为开机连接网络之类的做一些准备就可以完成安装了</strong></p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable dhcpcd iwd NetworkManager</span><br></pre></td></tr></table></figure></div>
+
+<p>完成以上步骤后我们需要退出<code>chroot</code></p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure></div>
+<p>取消挂载所有分区</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swapoff /dev/nvmexn1pN</span><br><span class="line">umount -R /mnt</span><br></pre></td></tr></table></figure></div>
+<p><strong>然后我们<code>reboot</code>就可以看到grub界面喽 要确保arch下有win的引导那就说明正常的</strong></p>
+<hr>
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>Tags</p>
+
+    </div>
+    <div class="notel-content">
+      <p>到这里我们就完成安装archlinux的所有步骤了<br>不过我看到了b站{unixchad}的困难模式install arch<br>web: <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1DTT2zSE5R" >https://www.bilibili.com/video/BV1DTT2zSE5R<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>我也在想补充到这篇blog中<br>那个我还是觉得挺有意思的</p>
+
+    </div>
+  </div>
+
+<p>感谢一下文档<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/vconlln/p/17065420.html" >arch安装教程<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 
 		</div>
 
@@ -591,7 +635,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-06-18 01:35:35
+                    :</strong> 2025-06-19 17:12:26
             </li>
         
         <li>
@@ -730,7 +774,7 @@
                     </span>
                     
                         <span>
-                            共 2.4k 字
+                            共 2.9k 字
                         </span>
                     
                 </p>
